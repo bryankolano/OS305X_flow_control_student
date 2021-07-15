@@ -1,0 +1,153 @@
+---
+title: "Slicing Data in R"
+author: "Bryan Kolano"
+date: "7/15/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Slicing Data in R
+
+### This is our semi-spontaneous class on how to subset/ slice data.
+
+ We know we can pull particular columns of data by using the dplyr verb "select", however, there are other ways we can do the same thing when you don't want to use or cannot use select.  But first, let's call in our package and data.
+
+```{r packages_data, message=FALSE}
+
+library(tidyverse)
+
+df <- mtcars
+```
+
+### Slicing
+When using slice notation in R, to pull particular data from rows and columns (and not create a new dataset), it is in the form
+df[row,column], where inside of brackets, we say which rows and columns we want to pull from.
+ 
+#### Column Slicing 
+1. If we only want to pull a column, there we can use a few methods:
+
+
+```{r}
+#Note, this method below returns a numeric vector NOT a smaller dataframe.
+
+
+#This method below returns a subsetted dataframe with rows and one column.
+
+
+#This method, where you use column number, returned a 1 column dataframe.
+
+```
+2. There are times where we want a smaller dataframe to be return; there are are numerous times when we don't, when we prefer vectors of data to be returned.  To return just the values in a particular column, we need to do the slicing notations shown at the top.  
+
+```{r}
+#Pulling all values from just the MPG column number
+
+
+#or column name
+
+```
+
+3. If we want to pull multiple columns of data from a dataframe, we can feed in a vector of column numbers or column names.
+```{r}
+
+#first two columns
+
+
+#or first three columns
+
+
+#or by column name
+
+
+``` 
+ 
+
+
+
+
+#### Row Slicing 
+When trying to slice by rows, we can subset in a similar manner to slicing by column.
+However, we cannot just put the row name into the brackets by itself or with $, because it will not work.  That is only for columns.
+
+1. We can use the row name using the slice notation of df[row,]
+```{r select_rows}
+#row name
+
+
+```
+
+
+2. Also using the comma, we can call by row numbers
+```{r}
+#row number
+
+```
+
+3. We can also slice by numerous row combos
+```{r}
+#rows 6 and 7
+
+
+#rows 6, 7, and 8
+
+
+#or by row names
+
+
+
+```
+
+#### Putting it all together
+Using what we know about slicing rows and columns, we can begin to slice from various rows and columns.
+
+Recall that slicing will be of the form dataframe[row,column].  If you're looking to pull all the rows of a given column(s), don't put anything in front of the comma.  If you want to see all the columns for a given row(s), don't put anything after the comma.
+
+#### Exercises
+
+Using the mtcars dataset, and setting it to the variable df, can you slice out the following:
+
+1. All data for the 'Honda Civic'. 
+2. The 'wt' of the 'Fiat 128' (only the weight, no other data).
+3. the 'mpg', 'hp', and 'gear' for the 'Datsun 710', 'Valiant', and 'Lotus Europa'.
+4. *Bonus*, without using column names and row names, can you come up with a clever way to pull the 'mpg' and 'carb' for the 'Mazda RX4' and the 'Volva 142E' (These are the top left, bottom left, top right, bottom right point in the dataframe.)
+
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+```{r}
+#Answer 1
+
+```
+
+```{r}
+#Answer 2
+
+```
+
+```{r}
+#Answer 3
+
+```
+
+```{r}
+#Answer 4
+
+```
